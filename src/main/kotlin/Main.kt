@@ -11,11 +11,11 @@ fun rangoedad(edad:Byte):IntRange{
         else -> 0..0
     }
 } //Devuelve a que rango de edad pertenece según la edad
-fun tablascorresp(edad:Byte,mes: Byte):List<Byte>{
-    return when (rangoedad(edad)){
-        6..8 -> if (parimpar(mes)=="par") listOf(2,4) else listOf(1,3,5)
-        9..10 -> if (parimpar(mes)=="par") listOf(6,8,10) else listOf(7,9)
-        11..12 -> listOf(11,12,13)
+fun listatablas(edad:Byte, mes: Byte):List<Byte>{
+    return when (edad){
+        in 6..8 -> if (parimpar(mes)=="par") listOf(2,4) else listOf(1,3,5)
+        in 9..10 -> if (parimpar(mes)=="par") listOf(6,8,10) else listOf(7,9)
+        in 11..12 -> listOf(11,12,13)
         else -> emptyList()
     }
 } //Devuelve una lista de las tablas que le corresponden
@@ -65,9 +65,9 @@ fun main() {
         } else {
             if (mes in 1..12 && edad in 6..12) {
                 println("Edad: $edad. El alumno está dentro del rango ${rangoedad(edad).first}-${rangoedad(edad).last}.")
-                println("Mes: $mes. El mes es " + parimpar(mes) + ", le corresponden las tablas siguientes: ${tablascorresp(edad, mes)}.")
+                println("Mes: $mes. El mes es " + parimpar(mes) + ", le corresponden las tablas siguientes: ${listatablas(edad, mes)}.")
                 println("_".repeat(80) + "\n\n")
-                tablas(tablascorresp(edad,mes))
+                tablas(listatablas(edad,mes))
 
             }
             else {
